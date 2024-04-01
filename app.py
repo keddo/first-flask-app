@@ -15,7 +15,7 @@ def hello():
 def greet(name):
     return f"Hello,{name}"
 
-@app.route('/add/<number1>/<number2>')
+@app.route('/add/<int: number1>/<int: number2>')
 def add(number1, number2):
     return f"{number1} + {number2} = {number1 + number2}"
 
