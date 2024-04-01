@@ -9,9 +9,9 @@ def index():
 @app.route('/hello', methods=["POST", "GET"])
 def hello():
     if request.method == 'GET':
-        return "You made, a GET request"
+        return "You made, a GET request", 200
     elif request.method == "POST":
-        return "You made a POST request"
+        return "You made a POST request", 201
     else:
         return "You will never see this message."
 
