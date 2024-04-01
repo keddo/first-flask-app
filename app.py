@@ -1,10 +1,13 @@
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 @app.route('/')
 def index():
-    return "<h1>Hello, World!</h1>"
+    myValue = 'NeuralNine'
+    myResult = 10 + 30
+    myList = [10, 20, 30, 40]
+    return render_template('index.html', myValue=myValue, myList=myList)
 
 @app.route('/hello', methods=["POST", "GET"])
 def hello():
@@ -14,9 +17,9 @@ def hello():
     #     return "You made a POST request", 201
     # else:
     #     return "You will never see this message."
-    res = make_response("Hello, World!")
+    res = make_response("Hello, World!\n")
     res.status_code = 201
-    res.headers['content-type'] = 'applicaion/octet-stream'
+    res.headers['content-type'] = 'text/plain'
     return res
 
 
