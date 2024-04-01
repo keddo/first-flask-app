@@ -14,7 +14,7 @@ def hello():
     #     return "You made a POST request", 201
     # else:
     #     return "You will never see this message."
-    res = make_response()
+    res = make_response("Hello, World!")
     res.status_code = 201
     res.headers['content-type'] = 'applicaion/octet-stream'
     return res
