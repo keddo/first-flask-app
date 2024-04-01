@@ -6,9 +6,14 @@ app = Flask(__name__)
 def index():
     return "<h1>Hello, World!</h1>"
 
-@app.route('/hello', methods=["GET"])
+@app.route('/hello', methods=["POST", "GET"])
 def hello():
-    return "Hell, world!"
+    if request.method == 'GET':
+        return "You made, a GET request"
+    elif request.method == "POST":
+        return "You made a POST request"
+    else:
+        return "You will never see this message."
 
 
 @app.route('/greet/<name>')
