@@ -19,13 +19,16 @@ def greet(name):
 def add(number1, number2):
     return f"{number1} + {number2} = {number1 + number2}"
 
-# handle url params
 
+# handle url params
 @app.route('/url_params')
 def handle_params():
-    greeting = request.args['greeting']
-    name= request.args.get('name')
-    return f'{greeting}, {name}'
+    if 'greeting' in request.args.keys() and 'name' in request.args.keys():
+        greeting = request.args['greeting']
+        name= request.args.get('name')
+        return f'{greeting}, {name}'
+    else:
+        return "Some URL params are missing"
 
 
 
